@@ -1,6 +1,6 @@
 package;
 
-import editor.LauncherWindow;
+import needs.ai.editor.widgets.LauncherWindow;
 import flash.display.Sprite;
 import haxe.ui.Toolkit;
 
@@ -21,7 +21,13 @@ class Main extends Sprite {
 		
 		// TODO cli options to generate code as part of project build process i.e. add it as a build step
 		
-		var launcherWindow:LauncherWindow = new LauncherWindow();
-		this.addChild(launcherWindow);
+		try {
+			var launcherWindow:LauncherWindow = new LauncherWindow();
+			this.addChild(launcherWindow);
+		} catch (e:Dynamic) {
+			// TODO show messagebox warning unhandled about exception?
+		}
+		
+		// TODO ensure settings etc are saved on exit
 	}
 }
