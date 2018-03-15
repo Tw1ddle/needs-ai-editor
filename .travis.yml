@@ -17,9 +17,10 @@ branches:
 
 # Install dependencies
 install:
-  - haxelib install hxcpp
+  - haxelib install hscript
+  - haxelib install lime
   - haxelib install openfl
 
 # Build the tool
 script:
-  - haxelib run lime build "project.xml" windows -debug -Dfdb
+  - haxelib run lime build "project.xml" linux -debug -Dfdb

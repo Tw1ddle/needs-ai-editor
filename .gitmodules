@@ -1,0 +1,9 @@
+[submodule "src/lib/needs-ai-lib"]
+	path = src/lib/needs-ai-lib
+	url = https://github.com/Tw1ddle/needs-ai-lib
+[submodule "src/lib/haxeui-core"]
+	path = src/lib/haxeui-core
+	url = https://github.com/haxeui/haxeui-core
+[submodule "src/lib/haxeui-openfl"]
+	path = src/lib/haxeui-openfl
+	url = https://github.com/haxeui/haxeui-openfl

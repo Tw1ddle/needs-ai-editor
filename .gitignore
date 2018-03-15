@@ -8,3 +8,4 @@
 **/.directory
 *.hash
 *.map
+src/export/**
