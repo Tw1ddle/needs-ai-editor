@@ -1,0 +1,25 @@
+sudo: required
+dist: trusty
+
+language: haxe
+
+# Add encrypted API key
+env:
+  global:
+    - secure: KS3iTAU2NQudqtS49wf2MkhWRvkh8vmxuZd6prTayQMw8TBjIW4fB3K2P3gzJHeZpGKTnQn8mX1UPEGH5XP9RuLUdY9zcIRpiPHJJYJLmD3l+1338Iqwa31JbZ3KgmSsFG6SFAdg/J8/MMVKOy+cNg46O25+i22iDks0AiS1kaFdF6YBfhuhkn2MG9aa4QjN30RKUzNiM9ZvUEQ3IZnoENf2RZEP2bICi8U8iAP+fBOzZRndesg7A07BHGJvNJTfntZaD1bjNdhUUOAhSO2G/latln4wY/ra84+s7sgAN+8OgYcmcvKVtQpZ9g+Qu874qOoCHpSjJbVYd7VBy7OGq/qqdBh/FOKm+CvSUhmcNFWjwVpEKaKtMyWvzaoseqyr1Tb8LMDWMMf5gfToNs6BTOCL0XwWZzFNaqzZ8MYsMJ5gHGf9e5cHjOyiAJl4zCvoEqxvkf/k0NLo7zAeCLqpn9DivqMO/nVIBys9i+zvwyVFcEDQbpbglGLDIy/ohahSjuV0FGDOOKz7jLYvRLYsotNdU5DA9jZyQI1BMYn7IcR8UyM+Q+pfT6NwcV5cs9mjcJHTJFB6FVXael3z02QtDRIo8NLw+/P8I3VxYRENvrvWRdkEMgVc+ps58rhJw1eBNFrlbGyInzAU0YrF82CeeDs0q2s2UJ/aog/FfbRvMGk=
+os:
+  - linux
+
+# Blacklist
+branches:
+  only:
+    - master
+
+# Install dependencies
+install:
+  - haxelib install hxcpp
+  - haxelib install openfl
+
+# Build the tool
+script:
+  - haxelib run lime build "project.xml" windows -debug -Dfdb
