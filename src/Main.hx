@@ -1,8 +1,8 @@
 package;
 
-import needs.ai.editor.widgets.LauncherWindow;
 import flash.display.Sprite;
 import haxe.ui.Toolkit;
+import needs.ai.editor.widgets.LauncherWindow;
 
 class Main extends Sprite {
     public function new () {

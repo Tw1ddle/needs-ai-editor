@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
-	<meta title="needs-ai-editor" package="com.samcodes.needsaieditor" version="1.0.0" company="Sam Twidale" />
+	<meta title="Needs AI Editor" package="com.samcodes.needsaieditor" version="1.0.0" company="Sam Twidale" />
 	<app main="Main" path="export" file="needs-ai-editor" />
 	
 	<assets path="assets" />
 	<source path="src" />
+	
+	<icon path="assets/app_icon/icon.svg" />
 	
 	<haxelib name="hscript" />
 	<haxelib name="openfl" />
