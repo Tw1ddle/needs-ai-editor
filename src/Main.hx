@@ -1,33 +1,41 @@
 package;
 
 import flash.display.Sprite;
-import haxe.ui.Toolkit;
-import needs.ai.ui.window.LauncherWindow;
+import lime.app.Application;
+import needs.app.NeedsAIEditor;
+import needs.cli.OptionHandler;
+import needs.common.Config;
 
 class Main extends Sprite {
+	private var editor:NeedsAIEditor = null;
+	
     public function new () {
-		super ();
+		super();
 		
-		Toolkit.init();
-		
-		// TODO attempt to open last-opened project
-		// TODO recent files list
-		// TODO saved settings (export paths, widget positions/layout)
-		// TODO main window tabs - project -> window with responses|inputs|considerations|actions|actionsets|reasoners|brains|archetypes|objectdefs(for smart world stuff?)
-		// TODO drag-drop project files
-		// TODO one-button source code export
-		// TODO autosave project state
-		// TODO scan needs-ai-lib and generate graph editors etc if possible
-		
-		// TODO cli options to generate code as part of project build process i.e. add it as a build step
-		
+		// Try to load global preferences
 		try {
-			var launcherWindow:LauncherWindow = new LauncherWindow();
-			this.addChild(launcherWindow);
-		} catch (e:Dynamic) {
-			// TODO show messagebox warning unhandled about exception?
+			if (!Config.globalPreferences.configFileExists()) {
+				Config.globalPreferences.save(); // Save default preferences file
+			}
+			Config.globalPreferences.load();
+		} catch (e:String) {
+			trace("Failed to load preferences, error: " + e);
 		}
 		
-		// TODO ensure settings etc are saved on exit
+		// Bump app launch count
+		Config.globalPreferences.applicationLaunchCount += 1;
+		
+		// Try to process command line options
+		// TODO options to load project, generate code and exit early, so this can be used as part of a project build process i.e. add code generation as a build step
+		var cliOptionHandler = new OptionHandler();
+		cliOptionHandler.processOptions();
+		
+		// Create the editor GUI
+		editor = new NeedsAIEditor(this);
+		
+		// Ensure global preferences etc are saved on exit
+		Application.current.onExit.add(function(i:Int) {
+			Config.globalPreferences.save();
+		});
 	}
 }
