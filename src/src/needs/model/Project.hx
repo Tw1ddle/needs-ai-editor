@@ -1,9 +1,9 @@
 package needs.model;
 
-import needs.serialization.Serializer;
+import needs.serialization.HxSerializator;
 
-@:build(needs.serialization.Serializer.build())
-@:autoBuild(needs.serialization.Serializer.build())
+@:build(needs.serialization.HxSerializator.build())
+@:autoBuild(needs.serialization.HxSerializator.build())
 class Project {
 	public var idGenerator(default, null):IdGenerator;
 	

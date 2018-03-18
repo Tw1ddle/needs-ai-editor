@@ -10,6 +10,7 @@
 	
 	<haxelib name="hscript" />
 	<haxelib name="openfl" />
+	<haxelib name="tjson" />
 	
 	<include path="lib/needs-ai-lib" />
 	

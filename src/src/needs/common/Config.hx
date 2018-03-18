@@ -1,7 +1,7 @@
 package needs.common;
 
-import lime.system.System;
 import haxe.io.Path;
+import lime.system.System;
 import needs.settings.GlobalPreferences;
 
 class Config {
@@ -12,10 +12,34 @@ class Config {
 		if (dir == null) {
 			throw "No desktop directory";
 		}
-		return new Path(Path.normalize(Path.addTrailingSlash(dir)));
+		return new Path(Path.normalize(dir));
+	}
+	
+	public static function getDefaultHaxeCodeExportDirectory():Path {
+		var dir:String = System.desktopDirectory;
+		if (dir == null) {
+			throw "No desktop directory";
+		}
+		return new Path(Path.normalize(dir) + "/needs_ai_editor_haxe_code");
+	}
+	
+	public static function getLoadProjectDirectory():Path {
+		if (globalPreferences.recentProjectFilepaths.length != 0 && globalPreferences.recentProjectFilepaths[0].length != 0) {
+			return new Path(Path.normalize(globalPreferences.recentProjectFilepaths[0]));
+		}
+		
+		var dir:String = System.desktopDirectory;
+		if (dir == null) {
+			throw "No desktop directory";
+		}
+		return new Path(Path.normalize(dir));
+	}
+	
+	public static function getSaveProjectDirectory():Path {
+		return getLoadProjectDirectory();
 	}
 	
 	public static function getDefaultGlobalPreferencesFilepath():Path {
-		return new Path(getGlobalPreferencesDirectory().toString() + "needs_ai_editor_global_prefs.json");
+		return new Path(Path.normalize(getGlobalPreferencesDirectory().toString() + "/needs_ai_editor_global_prefs.data"));
 	}
 }

@@ -1,14 +1,20 @@
 package needs.app;
 
+import haxe.io.Path;
 import haxe.ui.Toolkit;
-import needs.app.NeedsAIEditor;
 import needs.model.Project;
+import needs.ui.dialog.OpenProjectDialog;
+import needs.ui.dialog.SaveProjectDialog;
 import needs.ui.window.MainWindow;
 import openfl.display.Sprite;
 import openfl.events.KeyboardEvent;
 import openfl.ui.Keyboard;
+import needs.common.Config;
+import haxe.Timer;
 
 class NeedsAIEditor {
+	private var project:Project = new Project();
+	
 	public function new(sprite:Sprite) {
 		// Initialize HaxeUI
 		Toolkit.init();
@@ -22,19 +28,20 @@ class NeedsAIEditor {
 		
 		// Add handler for drag-dropping of project files
 		sprite.stage.window.onDropFile.add(function(path:String) {
-			trace ("user dropped file with path: " + path);
+			fileDropped(path);
 		});
 		
 		// Setup global keyboard shortcut handling
 		sprite.stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 		
 		// TODO attempt to open last-opened project (export paths, widget positions/layout)
-		// TODO recent files list
+		// TODO recent files dropdown list
 		// TODO main window tabs - project -> window with responses|inputs|considerations|actions|actionsets|reasoners|brains|archetypes|objectdefs(for smart world stuff?)
 		// TODO one-button source code export
-		// TODO autosave project state
-		// TODO undo/redo options (either use reversible command driven architecture or just save/restore entire application state (this shouldn't be too heavy as data models should be smallish)
 		// TODO scan needs-ai-lib code using macro + reflection to generate graph editors instead of hardcoding
+		
+		// Run a timer that autosaves the current project on a regular basis
+		Timer.delay(saveCurrentProject, 30000);
 	}
 	
 	public function loadProject(project:Project):Void {
@@ -43,14 +50,10 @@ class NeedsAIEditor {
 	
 	private function onKeyDown(evt:KeyboardEvent):Void {
 		if (evt.ctrlKey) {
-			if (evt.keyCode == Keyboard.Z) {
-				undo();
-			} else if (evt.keyCode == Keyboard.Y) {
-				redo();
-			} else if (evt.keyCode == Keyboard.S) {
-				saveProject();
-			} else if (evt.keyCode == Keyboard.O) {
-				openSelectProjectDialog();
+			if (evt.keyCode == Keyboard.S) {
+				openSaveProjectDialog();
+			} else if (evt.keyCode == Keyboard.O || evt.keyCode == Keyboard.L) {
+				openLoadProjectDialog();
 			} else if (evt.keyCode == Keyboard.N) {
 				openNewProject();
 			} else if (evt.keyCode == Keyboard.E) {
@@ -67,12 +70,13 @@ class NeedsAIEditor {
 		return false;
 	}
 	
-	private function openSelectProjectDialog():Void {
-		
+	private function openLoadProjectDialog():Void {
+		new OpenProjectDialog().open("json", Config.getLoadProjectDirectory().toString(), "Open Project");
 	}
 	
-	private function saveProject():Void {
-		
+	private function openSaveProjectDialog():Void {
+		// TODO actually serialize the project file, and also only save-as if we don't know the existing project file location
+		new SaveProjectDialog().save("", "json", Config.getSaveProjectDirectory().toString() + "/project.json", "Save Project As");
 	}
 	
 	private function openNewProject():Void {
@@ -80,6 +84,16 @@ class NeedsAIEditor {
 	}
 	
 	private function exportProjectToHaxe():Void {
+		
+	}
+	
+	private function fileDropped(file:String):Void {
+		var path = new Path(file);
+		
+		// TODO try to load project
+	}
+	
+	private function saveCurrentProject():Void {
 		
 	}
 }

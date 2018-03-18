@@ -13,7 +13,7 @@ using haxe.macro.Tools;
 
 private typedef SuperClass = Null<{ t:Ref<ClassType>, params:Array<Type> }>;
 
-class Serializer {
+class HxSerializator {
 	public static macro function build() : Array<Field> {
 		var klass = Context.getLocalClass().get();
 		var fields = Context.getBuildFields();
