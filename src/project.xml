@@ -12,8 +12,6 @@
 	<haxelib name="openfl" />
 	<haxelib name="json2object" />
 	
-	<include path="lib/needs-ai-lib" />
-	
 	<source path="lib/haxeui-core" />
 	<source path="lib/haxeui-openfl" />
 </project>

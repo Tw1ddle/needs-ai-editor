@@ -24,7 +24,6 @@
     <class path="src" />
     <class path="C:\HaxeToolkit\haxe\lib\openfl\7,1,2\src\externs\core\openfl" />
     <class path="C:\HaxeToolkit\haxe\lib\openfl\7,1,2\src\externs\extras" />
-    <class path="lib\needs-ai-lib" />
     <class path="lib\haxeui-core" />
     <class path="lib\haxeui-openfl" />
     <class path="export\windows\haxe" />
