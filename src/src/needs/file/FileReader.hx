@@ -26,6 +26,11 @@ class FileReader {
 		var data:String = File.getContent(filepath.toString());
 		var errors:Array<json2object.Error> = [];
 		var prefs:GlobalPreferences = new JsonParser<GlobalPreferences>(errors).fromJson(data, "");
+		
+		if (errors.length != 0) {
+			throw "Encountered JSON read errors when loading global preferences " + errors.toString();
+		}
+		
 		return prefs;
 		
 		#else
@@ -38,6 +43,11 @@ class FileReader {
 		var data:String = File.getContent(filepath.toString());
 		var errors:Array<json2object.Error> = [];
 		var prefs:Project = new JsonParser<Project>(errors).fromJson(data, "");
+		
+		if (errors.length != 0) {
+			throw "Encountered JSON read errors when loading project " + errors.toString();
+		}
+		
 		return prefs;
 		
 		#else

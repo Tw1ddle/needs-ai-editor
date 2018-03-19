@@ -7,7 +7,6 @@ import needs.settings.GlobalPreferences;
 
 #if sys
 import sys.io.File;
-import sys.FileSystem;
 #end
 
 class FileWriter {
@@ -19,10 +18,10 @@ class FileWriter {
 		#end
 	}
 	
-	public static function saveProjectFile(filepath:Path):Void {
+	public static function saveProjectFile(filepath:Path, project:Project):Void {
 		#if sys
 		var writer = new json2object.JsonWriter<Project>();
-		var json:String = writer.write(prefs);
+		var json:String = writer.write(project);
 		File.saveContent(filepath.toString(), json);
 		#end
 	}
