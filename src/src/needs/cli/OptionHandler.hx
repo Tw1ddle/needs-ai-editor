@@ -1,5 +1,7 @@
 package needs.cli;
 
+// TODO process options to load project, generate code and exit early, so this can be used as part of a project build process i.e. add code generation as a build step
+
 class OptionHandler {
 	private var options:Array<Option> = [];
 	

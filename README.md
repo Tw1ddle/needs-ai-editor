@@ -14,6 +14,6 @@ editing and export of utility-based AI systems.
  * Export AI configuration data directly to Haxe source code.
 
 ## Notes
-* Made using [HaxeUI](https://github.com/haxeui), [OpenFL](https://github.com/openfl/openfl), [hscript](https://github.com/HaxeFoundation/hscript), [TJSON](https://github.com/martamius/TJSON) and [Haxe Serializator](https://bitbucket.org/yar3333/haxe-serializator/src).
-* Tested on desktop Windows, and should also run on Mac and Linux, though it might build it is unsupported on other targets.
+* Made using [HaxeUI](https://github.com/haxeui), [OpenFL](https://github.com/openfl/openfl), [hscript](https://github.com/HaxeFoundation/hscript) and [json2object](https://github.com/elnabo/json2object)
+* Tested on desktop Windows, should also run on Mac and Linux. It is not supported on other targets.
 * If you have questions or suggestions then [get in touch](https://twitter.com/Sam_Twidale) or open an issue.

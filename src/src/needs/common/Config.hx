@@ -3,9 +3,33 @@ package needs.common;
 import haxe.io.Path;
 import lime.system.System;
 import needs.settings.GlobalPreferences;
+import needs.file.FileReader;
+import needs.file.FileWriter;
 
 class Config {
-	public static var globalPreferences(default, null):GlobalPreferences = new GlobalPreferences();
+	public static var globalPreferences:GlobalPreferences = new GlobalPreferences();
+	
+	public static function loadGlobalPreferencesOnLaunch():Void {
+		// Save default global preferences to file, if such a file doesn't already exist
+		try {
+			if (!FileReader.globalPreferencesFileExists()) {
+				FileWriter.saveGlobalPreferences(Config.getDefaultGlobalPreferencesFilepath(), Config.globalPreferences);
+			}
+		} catch (e:Dynamic) {
+			trace("Failed to create a default global preferences file, error: " + e);
+		}
+		
+		// Try to load global preferences from file
+		try {
+			var prefs = FileReader.loadGlobalPreferences(Config.getDefaultGlobalPreferencesFilepath());
+			if (prefs == null) {
+				throw "Failed to read global preferences file";
+			}
+			Config.globalPreferences = prefs;
+		} catch (e:Dynamic) {
+			trace("Failed to load global preferences, error: " + e);
+		}
+	}
 	
 	public static function getGlobalPreferencesDirectory():Path {
 		var dir:String = System.desktopDirectory;

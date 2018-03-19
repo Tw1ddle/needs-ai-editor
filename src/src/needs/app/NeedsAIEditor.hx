@@ -62,14 +62,6 @@ class NeedsAIEditor {
 		}
 	}
 	
-	private function undo():Bool {
-		return false;
-	}
-	
-	private function redo():Bool {
-		return false;
-	}
-	
 	private function openLoadProjectDialog():Void {
 		new OpenProjectDialog().open("json", Config.getLoadProjectDirectory().toString(), "Open Project");
 	}

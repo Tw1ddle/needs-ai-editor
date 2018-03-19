@@ -1,9 +1,5 @@
 package needs.model;
 
-import needs.serialization.HxSerializator;
-
-@:build(needs.serialization.HxSerializator.build())
-@:autoBuild(needs.serialization.HxSerializator.build())
 class Project {
 	public var idGenerator(default, null):IdGenerator;
 	
@@ -25,6 +21,7 @@ class Project {
 	// TODO signals for when everything happens i.e. handle deletion of ids that are used elsewhere etc
 	
 	// TODO decide on concrete types for needs ai ids/tags - object with an abstract int id and stringmap/variantmap(s) of properties perhaps?
+	// TODO just build the editor with the type ids/tags as part of the project - then we can parse these to file more easily, and figure out how to manipulate fields in the editor more easily
 	
 	public var inputData:Dynamic; // TODO input id/info - this needs to export straight to functions to be implemented in haxe, maybe with some smart autoconnection if pointed to existing haxe code that implements the functions?
 	
