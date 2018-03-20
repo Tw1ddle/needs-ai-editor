@@ -1,17 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <project>
 	<meta title="Needs AI Editor" package="com.samcodes.needsaieditor" version="1.0.0" company="Sam Twidale" />
-	<app main="Main" path="export" file="needs-ai-editor" />
-	
-	<assets path="assets" />
-	<source path="src" />
+	<app main="needs.app.Main" path="export" file="needs-ai-editor" />
 	
 	<icon path="assets/app_icon/icon.svg" />
+	<assets path="assets" />
 	
-	<haxelib name="hscript" />
-	<haxelib name="openfl" />
+	<!-- Include the source for the editor itself -->
+	<source path="src" />
+	
+	<!-- Include the source for the version of the Needs AI library the game (and editor) will use -->
+	<source path="../../src/lib/needs-ai-lib" />
+	
+	<!-- Include the source for game we're creating an AI for -->
+	<!-- This is so the editor can easily reflect on (and write out to) game-specific types -->
+	<source path="../../src" />
+	
+	<!-- For automatically getting at names of classes from the game source code -->
+	<haxelib name="compiletime" />
+	
+	<!-- For serializing/deserializing settings and project files -->
 	<haxelib name="json2object" />
 	
+	<!-- HaxeUI dependencies -->
+	<haxelib name="hscript" />
+	<haxelib name="openfl" />
 	<source path="lib/haxeui-core" />
 	<source path="lib/haxeui-openfl" />
 </project>

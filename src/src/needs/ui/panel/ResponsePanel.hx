@@ -4,6 +4,8 @@ import haxe.ui.core.Component;
 import haxe.ui.macros.ComponentMacros;
 
 class ResponsePanel extends Component {
+	private var responseClasses:Array<Class> = CompileTime.getAllClasses("needs.responses");
+	
 	public function new() {
 		super();
 		

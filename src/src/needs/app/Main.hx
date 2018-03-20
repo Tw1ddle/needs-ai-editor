@@ -1,4 +1,4 @@
-package;
+package needs.app;
 
 import flash.display.Sprite;
 import lime.app.Application;

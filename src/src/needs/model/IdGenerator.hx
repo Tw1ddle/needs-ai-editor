@@ -1,9 +1,9 @@
 package needs.model;
 
 class IdGenerator {
-	private var project:Project;
+	private var project:ProjectData;
 	
-	public function new(project:Project) {
+	public function new(project:ProjectData) {
 		this.project = project;
 	}
 	

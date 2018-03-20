@@ -4,7 +4,7 @@ import haxe.io.Path;
 import json2object.Error;
 import json2object.JsonParser;
 import needs.common.Config;
-import needs.model.Project;
+import needs.model.ProjectData;
 import needs.settings.GlobalPreferences;
 
 #if sys
@@ -38,11 +38,11 @@ class FileReader {
 		#end
 	}
 	
-	public static function loadProject(filepath:Path):Project {
+	public static function loadProject(filepath:Path):ProjectData {
 		#if sys
 		var data:String = File.getContent(filepath.toString());
 		var errors:Array<json2object.Error> = [];
-		var prefs:Project = new JsonParser<Project>(errors).fromJson(data, "");
+		var prefs:ProjectData = new JsonParser<ProjectData>(errors).fromJson(data, "");
 		
 		if (errors.length != 0) {
 			throw "Encountered JSON read errors when loading project " + errors.toString();
@@ -51,7 +51,7 @@ class FileReader {
 		return prefs;
 		
 		#else
-		return new Project();
+		return new ProjectData();
 		#end
 	}
 }

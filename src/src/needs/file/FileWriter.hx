@@ -2,8 +2,9 @@ package needs.file;
 
 import haxe.io.Path;
 import json2object.JsonWriter;
-import needs.model.Project;
+import needs.model.ProjectData;
 import needs.settings.GlobalPreferences;
+import needs.serialization.Serializer;
 
 #if sys
 import sys.io.File;
@@ -12,16 +13,14 @@ import sys.io.File;
 class FileWriter {
 	public static function saveGlobalPreferences(filepath:Path, prefs:GlobalPreferences):Void {
 		#if sys
-		var writer = new json2object.JsonWriter<GlobalPreferences>();
-		var json:String = writer.write(prefs);
+		var json = Serializer.serializeGlobalPreferences(prefs);
 		File.saveContent(filepath.toString(), json);
 		#end
 	}
 	
-	public static function saveProjectFile(filepath:Path, project:Project):Void {
+	public static function saveProjectFile(filepath:Path, project:ProjectData):Void {
 		#if sys
-		var writer = new json2object.JsonWriter<Project>();
-		var json:String = writer.write(project);
+		var json = Serializer.serializeProjectData(project);
 		File.saveContent(filepath.toString(), json);
 		#end
 	}
