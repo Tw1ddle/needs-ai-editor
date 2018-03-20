@@ -1,12 +1,10 @@
-/************************************************************************
-** STYLED
-*************************************************************************/
 * {
     font-size: 15px;
     font-style: bold;
 }
 
 #styledButton {
+    padding: 10px;
     border-size: 3px;
     border-radius: 10px;
     border-color: #997a00;
@@ -27,47 +25,4 @@
     background: #ffa700 #ffce00;
     border-color: #997a00;
     color: #665200;
-}
-
-/************************************************************************
-** BITMAP
-*************************************************************************/
-#bitmapButton {
-    background-image: "demo/button.png";
-    background-image-clip: 0px 0px 40px 94px;
-    background-image-slice: 10px 10px 30px 84px;
-    border: none;
-    background-color: white;
-    color: #666666 !important;
-    padding-top: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-bottom: 10px;
-}
-
-#bitmapButton .label {
-    margin-top: -1px;
-}
-
-#bitmapButton:hover {
-    background-image: "demo/button.png";
-    background-image-clip: 0px 95px 40px 189px;
-    background-image-slice: 10px 10px 30px 84px;
-    border: none;
-    background-color: white;
-    color: #FFFFFF !important;
-}
-
-#bitmapButton:down {
-    background-image: "demo/button.png";
-    background-image-clip: 0px 190px 40px 284px;
-    background-image-slice: 10px 10px 30px 84px;
-    border: none;
-    background-color: white;
-    color: #FCFCFC !important;
-}
-
-#bitmapButton:down .label {
-    margin-top: 0px;
-    margin-left: 1px;
 }

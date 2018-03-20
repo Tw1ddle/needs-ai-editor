@@ -3,11 +3,11 @@
     <style source="mainwindow.css" />
     <script source="mainwindow.hscript" />
 
-	<scrollview id="sidebarscrollview" style="padding: 10px;">
-	</scrollview>
-
 	<tabview id="paneltabview" style="padding: 10px;">
 	</tabview>
+	
+	<scrollview id="sidebarscrollview" style="padding: 10px;">
+	</scrollview>
 
 	<!--
 	<vbox>

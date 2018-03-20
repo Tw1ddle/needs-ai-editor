@@ -25,7 +25,9 @@ class NeedsAIEditor {
 		
 		// Load the user interface
 		try {
-			sprite.addChild(new MainWindow());
+			var window = new MainWindow();
+			window.app = this;
+			sprite.addChild(window);
 		} catch (e:Dynamic) {
 			// TODO show messagebox warning unhandled about exception
 		}

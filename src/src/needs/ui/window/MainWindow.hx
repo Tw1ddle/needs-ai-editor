@@ -6,6 +6,8 @@ import haxe.ui.containers.TabView;
 import haxe.ui.core.Component;
 import haxe.ui.core.MouseEvent;
 import haxe.ui.macros.ComponentMacros;
+import needs.app.NeedsAIEditor;
+import needs.model.ProjectData;
 import needs.ui.panel.ActionPanel;
 import needs.ui.panel.ActionSetPanel;
 import needs.ui.panel.ArchetypePanel;
@@ -19,6 +21,8 @@ import needs.ui.panel.ResponsePanel;
 import needs.ui.panel.WelcomePanel;
 
 class MainWindow extends Component {
+	public var app:NeedsAIEditor;
+	
 	public function new() {
 		super();
 		
@@ -65,6 +69,7 @@ class MainWindow extends Component {
 		var button:Button = new Button();
 		button.text = text;
 		button.onClick = onPress;
+		button.id = "styledButton";
 		
 		scrollView.addComponent(button);
 		scrollView.invalidate();

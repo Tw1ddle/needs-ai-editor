@@ -2,6 +2,7 @@
 <project>
 	<meta title="Needs AI Editor" package="com.samcodes.needsaieditor" version="1.0.0" company="Sam Twidale" />
 	<app main="needs.app.Main" path="export" file="needs-ai-editor" />
+	<window width="1280" height="800"/>
 	
 	<icon path="assets/app_icon/icon.svg" />
 	<assets path="assets" />
