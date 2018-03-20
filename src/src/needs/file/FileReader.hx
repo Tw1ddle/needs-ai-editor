@@ -6,6 +6,7 @@ import json2object.JsonParser;
 import needs.common.Config;
 import needs.model.ProjectData;
 import needs.settings.GlobalPreferences;
+import needs.serialization.Serializer;
 
 #if sys
 import sys.io.File;
@@ -24,13 +25,7 @@ class FileReader {
 	public static function loadGlobalPreferences(filepath:Path):GlobalPreferences {
 		#if sys
 		var data:String = File.getContent(filepath.toString());
-		var errors:Array<json2object.Error> = [];
-		var prefs:GlobalPreferences = new JsonParser<GlobalPreferences>(errors).fromJson(data, "");
-		
-		if (errors.length != 0) {
-			throw "Encountered JSON read errors when loading global preferences " + errors.toString();
-		}
-		
+		var prefs = Serializer.unserializeGlobalPreferences(data);
 		return prefs;
 		
 		#else
@@ -41,13 +36,7 @@ class FileReader {
 	public static function loadProject(filepath:Path):ProjectData {
 		#if sys
 		var data:String = File.getContent(filepath.toString());
-		var errors:Array<json2object.Error> = [];
-		var prefs:ProjectData = new JsonParser<ProjectData>(errors).fromJson(data, "");
-		
-		if (errors.length != 0) {
-			throw "Encountered JSON read errors when loading project " + errors.toString();
-		}
-		
+		var prefs = Serializer.unserializeProjectData(data);
 		return prefs;
 		
 		#else

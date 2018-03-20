@@ -1,7 +1,22 @@
 package needs.ui.window;
 
+import haxe.ui.components.Button;
+import haxe.ui.containers.ScrollView;
+import haxe.ui.containers.TabView;
 import haxe.ui.core.Component;
+import haxe.ui.core.MouseEvent;
 import haxe.ui.macros.ComponentMacros;
+import needs.ui.panel.ActionPanel;
+import needs.ui.panel.ActionSetPanel;
+import needs.ui.panel.ArchetypePanel;
+import needs.ui.panel.BrainPanel;
+import needs.ui.panel.ConsiderationPanel;
+import needs.ui.panel.EnvironmentPanel;
+import needs.ui.panel.ExportPanel;
+import needs.ui.panel.InputPanel;
+import needs.ui.panel.ReasonerPanel;
+import needs.ui.panel.ResponsePanel;
+import needs.ui.panel.WelcomePanel;
 
 class MainWindow extends Component {
 	public function new() {
@@ -10,62 +25,54 @@ class MainWindow extends Component {
 		var window = ComponentMacros.buildComponent("assets/ui/window/mainwindow.xml");
 		addComponent(window);
 		
-		addSidebarActionButton("New Project", function() {
+		addSidebarButton("New Project", function(e:MouseEvent) {
 			
 		});
-		addSidebarActionButton("Load Project", function() {
+		addSidebarButton("Load Project", function(e:MouseEvent) {
 			
 		});
-		addSidebarActionButton("Save Project", function() {
+		addSidebarButton("Save Project", function(e:MouseEvent) {
 			
 		});
-		addSidebarActionButton("Save Project As", function() {
+		addSidebarButton("Save Project As", function(e:MouseEvent) {
 			
 		});
-		addSidebarActionButton("Export To Haxe", function() {
-			
-		});
-		addSidebarActionButton("Recent Projects", function() {
+		addSidebarButton("Recent Projects", function(e:MouseEvent) {
 			
 		});
 		
-		addPanelSelectButton("Welcome", function() {
-			
-		});
-		addPanelSelectButton("Responses", function() {
-			
-		});
-		addPanelSelectButton("Inputs", function() {
-			
-		});
-		addPanelSelectButton("Considerations", function() {
-			
-		});
-		addPanelSelectButton("Actions", function() {
-			
-		});
-		addPanelSelectButton("Action Sets", function() {
-			
-		});
-		addPanelSelectButton("Reasoners", function() {
-			
-		});
-		addPanelSelectButton("Brains", function() {
-			
-		});
-		addPanelSelectButton("Archetypes", function() {
-			
-		});
-		addPanelSelectButton("Environments", function() {
-			
-		});
+		var panels = [
+			new WelcomePanel(),
+			new InputPanel(),
+			new ResponsePanel(),
+			new ConsiderationPanel(),
+			new ActionPanel(),
+			new ActionSetPanel(),
+			new ReasonerPanel(),
+			new BrainPanel(),
+			new ArchetypePanel(),
+			new EnvironmentPanel(),
+			new ExportPanel()
+		];
+		for (panel in panels) {
+			addPanel(panel);
+		}
 	}
 	
-	private function addSidebarActionButton(text:String, onPress:Void->Void):Void {
+	private function addSidebarButton(text:String, onPress:MouseEvent->Void):Void {
+		var scrollView:ScrollView = cast findComponent("sidebarscrollview");
 		
+		var button:Button = new Button();
+		button.text = text;
+		button.onClick = onPress;
+		
+		scrollView.addComponent(button);
+		scrollView.invalidate();
 	}
 	
-	private function addPanelSelectButton(text:String, onPress:Void->Void):Void {
-		
+	private function addPanel(panel:Component):Void {
+		var tabView:TabView = cast findComponent("paneltabview");
+		tabView.addComponent(panel);
+		tabView.invalidate();
 	}
 }

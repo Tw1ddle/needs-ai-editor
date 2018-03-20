@@ -6,6 +6,7 @@ import haxe.ui.macros.ComponentMacros;
 class EnvironmentPanel extends Component {
 	public function new() {
 		super();
+		text = "Environment";
 		
 		var window = ComponentMacros.buildComponent("assets/ui/panel/environmentpanel.xml");
 		addComponent(window);
