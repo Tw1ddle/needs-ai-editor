@@ -6,8 +6,8 @@
     <movie input="" />
     <movie path="project.xml" />
     <movie fps="30" />
-    <movie width="800" />
-    <movie height="600" />
+    <movie width="1280" />
+    <movie height="800" />
     <movie version="1" />
     <movie minorVersion="0" />
     <movie platform="Lime" />
@@ -25,20 +25,21 @@
     <class path="src" />
     <class path="..\..\src\lib\needs-ai-lib" />
     <class path="..\..\src" />
+    <class path="C:\HaxeToolkit\haxe\lib\openfl\7,1,2\src\externs\core\flash" />
     <class path="C:\HaxeToolkit\haxe\lib\openfl\7,1,2\src\externs\core\openfl" />
     <class path="C:\HaxeToolkit\haxe\lib\openfl\7,1,2\src\externs\extras" />
     <class path="lib\haxeui-core" />
     <class path="lib\haxeui-openfl" />
-    <class path="export\windows\haxe" />
+    <class path="export\flash\haxe" />
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="compiletime=2.7.0&#xA;json2object=3.1.0&#xA;hxjsonast=1.0.1&#xA;hscript=2.1.1&#xA;openfl=7.1.2&#xA;lime=6.2.0&#xA;tools=6.2.0&#xA;no-compilation&#xA;native&#xA;lime-native&#xA;lime-vorbis&#xA;openfl-native&#xA;lime-cffi&#xA;windows&#xA;desktop&#xA;display" />
+    <option directives="compiletime=2.7.0&#xA;json2object=3.1.0&#xA;hxjsonast=1.0.1&#xA;hscript=2.1.1&#xA;openfl=7.1.2&#xA;lime=6.2.0&#xA;tools=6.2.0&#xA;no-compilation&#xA;openfl-flash&#xA;web&#xA;display" />
     <option flashStrict="False" />
     <option noInlineOnDebug="False" />
     <option mainClass="ApplicationMain" />
     <option enabledebug="False" />
-    <option additional="--macro openfl._internal.utils.ExtraParams.include()&#xA;--macro lime.Lib.extraParams()&#xA;--remap flash:openfl&#xA;-debug " />
+    <option additional="--macro openfl._internal.utils.ExtraParams.include()&#xA;--macro lime.Lib.extraParams()&#xA;-swf-version 17&#xA;-debug " />
   </build>
   <!-- haxelib libraries -->
   <haxelib>

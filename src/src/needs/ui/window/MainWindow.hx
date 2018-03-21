@@ -1,13 +1,14 @@
 package needs.ui.window;
 
 import haxe.ui.components.Button;
+import haxe.ui.components.Label;
+import haxe.ui.components.Spacer;
 import haxe.ui.containers.ScrollView;
 import haxe.ui.containers.TabView;
 import haxe.ui.core.Component;
 import haxe.ui.core.MouseEvent;
 import haxe.ui.macros.ComponentMacros;
 import needs.app.NeedsAIEditor;
-import needs.model.ProjectData;
 import needs.ui.panel.ActionPanel;
 import needs.ui.panel.ActionSetPanel;
 import needs.ui.panel.ArchetypePanel;
@@ -28,6 +29,8 @@ class MainWindow extends Component {
 		
 		var window = ComponentMacros.buildComponent("assets/ui/window/mainwindow.xml");
 		addComponent(window);
+		
+		addAppTitle("Needs AI Editor");
 		
 		addSidebarButton("New Project", function(e:MouseEvent) {
 			
@@ -61,6 +64,21 @@ class MainWindow extends Component {
 		for (panel in panels) {
 			addPanel(panel);
 		}
+	}
+	
+	private function addAppTitle(text:String):Void {
+		var scrollView:ScrollView = cast findComponent("sidebarscrollview");
+		
+		var label:Label = new Label();
+		label.text = text;
+		label.id = "appTitle";
+		
+		var spacer:Spacer = new Spacer();
+		spacer.id = "appTitleSpacer";
+		
+		scrollView.addComponent(label);
+		scrollView.addComponent(spacer);
+		scrollView.invalidate();
 	}
 	
 	private function addSidebarButton(text:String, onPress:MouseEvent->Void):Void {
