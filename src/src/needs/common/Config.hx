@@ -7,6 +7,10 @@ import needs.file.FileReader;
 import needs.file.FileWriter;
 
 class Config {
+	public static var tutorialUrl(default, null):String = "TODO";
+	public static var codeRepositoryUrl(default, null):String = "https://github.com/Tw1ddle/needs-ai-editor";
+	public static var webDemoUrl(default, null):String = "https://tw1ddle.github.io/needs-ai/index.html";
+	
 	public static var globalPreferences:GlobalPreferences = new GlobalPreferences();
 	
 	public static function loadGlobalPreferencesOnLaunch():Void {

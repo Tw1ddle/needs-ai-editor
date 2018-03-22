@@ -3,12 +3,12 @@ package needs.ui.panel;
 import haxe.ui.core.Component;
 import haxe.ui.macros.ComponentMacros;
 
-class WelcomePanel extends Component {
+class ProjectPanel extends Component {
 	public function new() {
 		super();
-		text = "Welcome";
+		text = "Project";
 		
-		var window = ComponentMacros.buildComponent("assets/ui/panel/welcomepanel.xml");
+		var window = ComponentMacros.buildComponent("assets/ui/panel/projectpanel.xml");
 		addComponent(window);
 	}
 }

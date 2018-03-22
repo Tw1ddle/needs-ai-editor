@@ -8,7 +8,9 @@ import haxe.ui.containers.TabView;
 import haxe.ui.core.Component;
 import haxe.ui.core.MouseEvent;
 import haxe.ui.macros.ComponentMacros;
+import haxe.ui.styles.Style;
 import needs.app.NeedsAIEditor;
+import needs.common.Config;
 import needs.ui.panel.ActionPanel;
 import needs.ui.panel.ActionSetPanel;
 import needs.ui.panel.ArchetypePanel;
@@ -19,7 +21,9 @@ import needs.ui.panel.ExportPanel;
 import needs.ui.panel.InputPanel;
 import needs.ui.panel.ReasonerPanel;
 import needs.ui.panel.ResponsePanel;
-import needs.ui.panel.WelcomePanel;
+import needs.ui.panel.ProjectPanel;
+import openfl.Lib;
+import openfl.net.URLRequest;
 
 class MainWindow extends Component {
 	public var app:NeedsAIEditor;
@@ -31,6 +35,8 @@ class MainWindow extends Component {
 		addComponent(window);
 		
 		addAppTitle("Needs AI Editor");
+		
+		addSpacer();
 		
 		addSidebarButton("New Project", function(e:MouseEvent) {
 			
@@ -48,8 +54,16 @@ class MainWindow extends Component {
 			
 		});
 		
+		addSpacer();
+		
+		addLinkButton("Tutorial", Config.tutorialUrl);
+		addLinkButton("Code Repo", Config.codeRepositoryUrl);
+		addLinkButton("Web Demo", Config.webDemoUrl);
+		
+		addSpacer();
+		
 		var panels = [
-			new WelcomePanel(),
+			new ProjectPanel(),
 			new InputPanel(),
 			new ResponsePanel(),
 			new ConsiderationPanel(),
@@ -73,10 +87,15 @@ class MainWindow extends Component {
 		label.text = text;
 		label.id = "appTitle";
 		
-		var spacer:Spacer = new Spacer();
-		spacer.id = "appTitleSpacer";
-		
 		scrollView.addComponent(label);
+		scrollView.invalidate();
+	}
+	
+	private function addSpacer():Void {
+		var scrollView:ScrollView = cast findComponent("sidebarscrollview");
+		
+		var spacer:Spacer = new Spacer();
+		spacer.id = "spacer";
 		scrollView.addComponent(spacer);
 		scrollView.invalidate();
 	}
@@ -85,9 +104,28 @@ class MainWindow extends Component {
 		var scrollView:ScrollView = cast findComponent("sidebarscrollview");
 		
 		var button:Button = new Button();
+		button.percentWidth = 100;
 		button.text = text;
 		button.onClick = onPress;
 		button.id = "styledButton";
+		
+		scrollView.addComponent(button);
+		scrollView.invalidate();
+	}
+	
+	private function addLinkButton(text:String, link:String, ?icon:String):Void {
+		var scrollView:ScrollView = cast findComponent("sidebarscrollview");
+		
+		var button:Button = new Button();
+		button.percentWidth = 100;
+		button.id = "styledButton";
+		if(icon != null) {
+			button.icon = icon;
+		}
+		button.text = text;
+		button.onClick = function(e:MouseEvent):Void {
+			Lib.getURL(new URLRequest(link));
+		};
 		
 		scrollView.addComponent(button);
 		scrollView.invalidate();

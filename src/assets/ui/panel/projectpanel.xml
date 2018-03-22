@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <hbox width="100%" style="padding: 5px;">
-    <style source="welcomepanel.css" />
-    <script source="welcomepanel.hscript" />
+    <style source="projectpanel.css" />
+    <script source="projectpanel.hscript" />
 
 	<vbox>
 		<grid columns="2" style="spacing: 10px;">
