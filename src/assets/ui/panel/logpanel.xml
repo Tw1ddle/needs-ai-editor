@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hbox width="100%" style="padding: 5px;">
+    <style source="logpanel.css" />
+    <script source="logpanel.hscript" />
+
+    <vbox>
+        <textarea id="logtextarea" width="800px" height="500px" />
+    </vbox>
+</hbox>

@@ -23,6 +23,9 @@
 	<!-- For serializing/deserializing settings and project files -->
 	<haxelib name="json2object" />
 	
+	<!-- For signals/slots -->
+	<haxelib name="msignal" />
+	
 	<!-- HaxeUI dependencies -->
 	<haxelib name="hscript" />
 	<haxelib name="openfl" />

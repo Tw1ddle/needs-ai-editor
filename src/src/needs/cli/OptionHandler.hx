@@ -6,7 +6,7 @@ class OptionHandler {
 	private var options:Array<Option> = [];
 	
 	public function new() {
-		#if neko cpp php
+		#if (neko || cpp || php)
 		determineOptions(Sys.args());
 		#end
 	}

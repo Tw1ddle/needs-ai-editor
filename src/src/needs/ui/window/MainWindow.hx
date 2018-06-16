@@ -8,9 +8,7 @@ import haxe.ui.containers.TabView;
 import haxe.ui.core.Component;
 import haxe.ui.core.MouseEvent;
 import haxe.ui.macros.ComponentMacros;
-import haxe.ui.styles.Style;
 import needs.app.NeedsAIEditor;
-import needs.common.Config;
 import needs.ui.panel.ActionPanel;
 import needs.ui.panel.ActionSetPanel;
 import needs.ui.panel.ArchetypePanel;
@@ -19,11 +17,10 @@ import needs.ui.panel.ConsiderationPanel;
 import needs.ui.panel.EnvironmentPanel;
 import needs.ui.panel.ExportPanel;
 import needs.ui.panel.InputPanel;
+import needs.ui.panel.ProjectPanel;
 import needs.ui.panel.ReasonerPanel;
 import needs.ui.panel.ResponsePanel;
-import needs.ui.panel.ProjectPanel;
-import openfl.Lib;
-import openfl.net.URLRequest;
+import needs.ui.panel.LogPanel;
 
 class MainWindow extends Component {
 	public var app:NeedsAIEditor;
@@ -39,26 +36,23 @@ class MainWindow extends Component {
 		addSpacer();
 		
 		addSidebarButton("New Project", function(e:MouseEvent) {
-			
+			app.createNewProject();
 		});
 		addSidebarButton("Load Project", function(e:MouseEvent) {
-			
+			app.openLoadProjectDialog();
 		});
 		addSidebarButton("Save Project", function(e:MouseEvent) {
-			
+			app.openSaveProjectAsDialogOrSaveProjectToKnownPath();
 		});
 		addSidebarButton("Save Project As", function(e:MouseEvent) {
-			
-		});
-		addSidebarButton("Recent Projects", function(e:MouseEvent) {
-			
+			app.openSaveProjectAsDialog();
 		});
 		
 		addSpacer();
 		
-		addLinkButton("Tutorial", Config.tutorialUrl);
-		addLinkButton("Code Repo", Config.codeRepositoryUrl);
-		addLinkButton("Web Demo", Config.webDemoUrl);
+		addLinkButton("Tutorial", app.openTutorialUrl);
+		addLinkButton("Code Repo", app.openCodeRepoUrl);
+		addLinkButton("Web Demo", app.openWebDemoUrl);
 		
 		addSpacer();
 		
@@ -73,7 +67,8 @@ class MainWindow extends Component {
 			new BrainPanel(),
 			new ArchetypePanel(),
 			new EnvironmentPanel(),
-			new ExportPanel()
+			new ExportPanel(),
+			new LogPanel()
 		];
 		for (panel in panels) {
 			addPanel(panel);
@@ -113,7 +108,7 @@ class MainWindow extends Component {
 		scrollView.invalidate();
 	}
 	
-	private function addLinkButton(text:String, link:String, ?icon:String):Void {
+	private function addLinkButton(text:String, onClick:Void->Void, ?icon:String):Void {
 		var scrollView:ScrollView = cast findComponent("sidebarscrollview");
 		
 		var button:Button = new Button();
@@ -124,7 +119,7 @@ class MainWindow extends Component {
 		}
 		button.text = text;
 		button.onClick = function(e:MouseEvent):Void {
-			Lib.getURL(new URLRequest(link));
+			onClick();
 		};
 		
 		scrollView.addComponent(button);

@@ -2,10 +2,10 @@
 <hbox width="100%" height="100%" style="padding: 5px;">
     <style source="mainwindow.css" />
     <script source="mainwindow.hscript" />
-	
-	<scrollview id="sidebarscrollview" style="padding: 10px;" width="150px" horizontalAlign="left">
-	</scrollview>
-	
-	<tabview id="paneltabview" style="padding: 10px;">
-	</tabview>
+
+    <scrollview id="sidebarscrollview" style="padding: 10px;" width="150px" horizontalAlign="left">
+    </scrollview>
+
+    <tabview id="paneltabview" style="padding: 10px;">
+    </tabview>
 </hbox>
