@@ -1,17 +1,16 @@
 [![Project logo](https://github.com/Tw1ddle/needs-ai-editor/blob/master/screenshots/logo.png?raw=true "Need-based AI project logo")](https://github.com/Tw1ddle/needs-ai-editor/)
 
-[![Travis Build Status](https://img.shields.io/travis/Tw1ddle/needs-ai-editor.svg?style=flat-square)](https://travis-ci.org/Tw1ddle/needs-ai-editor)
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](https://github.com/Tw1ddle/needs-ai-editor/blob/master/LICENSE)
+[![License](https://img.shields.io/:license-mit-blue.svg?style=flat-square)](https://github.com/Tw1ddle/needs-ai-editor/blob/master/LICENSE)
 
-WORK IN PROGRESS.
+The aim of this project was to implement a GUI editor for utility-based AI systems for Haxe game development. It's totally unfinished - don't use this for anything!
 
-Graphical editor for the [Needs AI](https://github.com/Tw1ddle/needs-ai-lib) utility-based AI library. The aim is to facilitate creation,
+Graphical editor for the [Needs AI](https://github.com/Tw1ddle/needs-ai-lib) utility-based AI library to facilitate creation,
 editing and export of utility-based AI systems.
 
 ## Features
  * Utility-based AI editor for designing individual considerations through to entire AI agent brains.
- * Project files load and save as JSON for consumption by other tools.
- * Export AI configuration data directly to Haxe source code.
+ * ~~Project files load and save as JSON for consumption by other tools.~~
+ * ~~Export AI configuration data directly to Haxe source code.~~
 
 ## Notes
 * Made using [HaxeUI](https://github.com/haxeui), [OpenFL](https://github.com/openfl/openfl), [hscript](https://github.com/HaxeFoundation/hscript) and [json2object](https://github.com/elnabo/json2object)
